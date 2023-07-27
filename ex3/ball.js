@@ -7,6 +7,8 @@ function Ball(x, y, color){
     this.vy = 0;
     this.color = color || "black"
     this.isActive = false;
+    this.radius = 30;
+    this.speed = 3;
 }
 
 Ball.prototype = {
@@ -29,14 +31,14 @@ Ball.prototype = {
             this.vy = 0;
         }
         
-        this.x+=this.vx;
-        this.y+=this.vy;
+        this.x+=this.vx*this.speed;
+        this.y+=this.vy*this.speed;
         
     },
 
     draw : function(ctx){ //매개변수에 없어도 전역변수라 가능
         var shape = new Path2D();
-        shape.arc(this.x,this.y,30,0,Math.PI*2);
+        shape.arc(this.x,this.y,this.radius,0,Math.PI*2);
         // ctx.clearRect(0,0,canvas.width,canvas.height)
         var originColor = ctx.fillStyle;
         ctx.fillStyle = this.color;
@@ -63,11 +65,11 @@ Ball.prototype = {
     },
 
     isLocated : function(x, y){
-        if(this.x - 30 <= x && x <= this.x + 30
-            && this.y - 30 <= y && y <= this.y + 30){
+        if(this.x - this.radius <= x && x <= this.x + this.radius
+            && this.y - this.radius <= y && y <= this.y + this.radius){
             return true;
         }
-    }
+    }, 
 
 };
 
