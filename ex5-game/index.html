@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex5  GAME 만들어 보기</title>
+    <script type="module" src="app.js" defer></script>
+    <!-- defer 스크립트가 body 밑에서 실행되는것처럼 인식 -->
+    <style>
+        body{
+            margin: 0;
+        }
+        #canvas{
+            border: 1px solid gray;
+            outline: none;
+        }
+        .d-none{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <img class = "d-none" src = "image/boy.png">
+    <img id="bg" class = "d-none" src = "image/map3.png">
+    <canvas id = "canvas" tabindex="0" width= "900" height= "700"></canvas>
+</body>
+</html>
