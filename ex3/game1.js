@@ -57,6 +57,7 @@ window.setInterval(function(){
         ball.update();
 
     upButton.update();
+    // downButton.update();
 
     ctx.clearRect(0,0,canvas.width,canvas.height)
     
