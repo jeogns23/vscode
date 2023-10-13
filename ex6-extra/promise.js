@@ -9,9 +9,13 @@ window.addEventListener("load", function () {
 
     root.firstElementChild.classList.add("opacity:0")
 
-    this.setTimeout(function () {
+    setTimeout(function () {
 
         root.firstElementChild.classList.remove("opacity:0")
+
+        root.firstElementChild.ontransitionend = function () {
+            root.firstElementChild.style.width = "200px";
+        }
         
     }, 500);
 
