@@ -21,6 +21,27 @@ window.addEventListener("load", function () {
         let response = await fetch(`http://localhost:8080/api/menus`)
         let list = await response.json()
         console.log(list);
+
+        let promise = new Promise(resolve => {
+            resolve(list)
+        })
+
+        promise
+            .then(list => {
+                console.log(list)
+                return list[0]
+            })
+            .then(menu => {
+                console.log(menu)
+                return menu.korName
+            })
+            .then(korName => {
+                console.log(korName)
+                return korName.length
+            })
+            .then(length => {
+            console.log(length)
+            })
     }
     
     // button.onclick = function () {
