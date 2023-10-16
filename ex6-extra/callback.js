@@ -33,9 +33,9 @@ window.addEventListener("load", function () {
         root.firstElementChild.classList.remove("opacity:0")
 
         root.firstElementChild.ontransitionend = function () {
-            root.firstElementChild.style.width = "200px";
+            root.firstElementChild.style.width = "200px"
         }
         
-    }, 500);
+    }, 500)
 
 })

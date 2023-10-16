@@ -22,11 +22,14 @@ window.addEventListener("load", function () {
         let promise = fetch(`http://localhost:8080/api/menus`)
 
         promise.then(function (response) {
-            let promise1 = response.json()
+            return response.json()
 
-            promise1.then(function (list) {
+            // promise1.then(function (list) {
+            //     console.log(list);
+            // })
+        })
+            .then(function (list) {
                 console.log(list);
-            })
         })
 
         // let promise = get(`http://localhost:8080/api/menus`)
@@ -50,7 +53,7 @@ window.addEventListener("load", function () {
         root.firstElementChild.classList.remove("opacity:0")
 
         root.firstElementChild.ontransitionend = function () {
-            root.firstElementChild.style.width = "200px";
+            root.firstElementChild.style.width = "200px"
         }
         
     }, 500);
