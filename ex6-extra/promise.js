@@ -2,22 +2,29 @@ window.addEventListener("load", function () {
     let root = this.document.querySelector("#root")
     let button = this.document.querySelector("button")
 
-    function get(url, resultCallback) {
-        let request = new XMLHttpRequest()
-    
-        request.open("GET", url)
-        request.onload = function(){
+    function get(url) {
+        
+        return new Promise((resolve) => { 
+            let request = new XMLHttpRequest()
+            request.open("GET", url)
+            request.onload = function(){
             //console.log(request.responseText)
-            let list = JSON.parse(request.responseText)
-            resultCallback(list)
-        }
-        request.send()
+                let list = JSON.parse(request.responseText)
+                resolve(list)
+            }
+            request.send()
+        })
+    
     }
     
     button.onclick = function () {
-        get(`http://localhost:8080/api/menus`, function (list) { 
-            console.log(list)
+
+        let promise = get(`http://localhost:8080/api/menus`)
+
+        promise.then(function (response) { 
+            console.log(response)
         })
+        
     }
 
     let template = `<img src = "image/8.png">`
