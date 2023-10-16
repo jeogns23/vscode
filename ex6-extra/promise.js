@@ -19,11 +19,21 @@ window.addEventListener("load", function () {
     
     button.onclick = function () {
 
-        let promise = get(`http://localhost:8080/api/menus`)
+        let promise = fetch(`http://localhost:8080/api/menus`)
 
-        promise.then(function (response) { 
-            console.log(response)
+        promise.then(function (response) {
+            let promise1 = response.json()
+
+            promise1.then(function (list) {
+                console.log(list);
+            })
         })
+
+        // let promise = get(`http://localhost:8080/api/menus`)
+
+        // promise.then(function (response) { 
+        //     console.log(response)
+        // })
         
     }
 
