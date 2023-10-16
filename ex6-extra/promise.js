@@ -2,26 +2,28 @@ window.addEventListener("load", function () {
     let root = this.document.querySelector("#root")
     let button = this.document.querySelector("button")
 
-    function get(url) {
+    // function get(url) {
         
-        return new Promise((resolve) => { 
-            let request = new XMLHttpRequest()
-            request.open("GET", url)
-            request.onload = function(){
-            //console.log(request.responseText)
-                let list = JSON.parse(request.responseText)
-                resolve(list)
-            }
-            request.send()
-        })
+    //     return new Promise((resolve) => { 
+    //         let request = new XMLHttpRequest()
+    //         request.open("GET", url)
+    //         request.onload = function(){
+    //         //console.log(request.responseText)
+    //             let list = JSON.parse(request.responseText)
+    //             resolve(list)
+    //         }
+    //         request.send()
+    //     })
     
-    }
+    // }
     
     button.onclick = function () {
 
         let promise = fetch(`http://localhost:8080/api/menus`)
+        // fetch API는 Promise를 반환. XHR대신 사용 가능
 
-        promise.then(function (response) {
+        promise //중간에 암호화, 디코드 등이 가능한 미들웨어 시스템 지원
+            .then(function (response) {
             return response.json()
 
             // promise1.then(function (list) {
@@ -29,7 +31,11 @@ window.addEventListener("load", function () {
             // })
         })
             .then(function (list) {
-                console.log(list);
+            return list[0] //return한 모든 값은 promise 로 전달하지 않아도 then 으로 받을 수 있다.
+            // console.log(list);
+        })
+            .then(function (menu) {
+            console.log(menu);
         })
 
         // let promise = get(`http://localhost:8080/api/menus`)
